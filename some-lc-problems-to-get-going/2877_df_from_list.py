@@ -1,14 +1,22 @@
 import pandas as pd
 
 def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
-    # 2
+
+    # way 3
+    df = { 'student_id': [], 'age': [] }
+    for sid, age in student_data:
+        df[ 'student_id' ].append( sid )
+        df[ 'age' ].append( age )
+    return pd.DataFrame( df )
+
+    # way 2
     return pd.DataFrame(student_data, columns=['student_id', 'age'])
-    # 1
-    """
+
+    # way 1
+
     cols = ['student_id', 'age']
-    res = pd.DataFrame(student_data, columns=cols)
-    return res
-    """
+    return pd.DataFrame(student_data, columns=cols)
+
 """
 +------------+-----+
 | student_id | age |
