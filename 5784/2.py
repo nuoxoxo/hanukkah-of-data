@@ -27,3 +27,5 @@ coffee_orders = pd.merge(coffee_SKU, df_orders_items, on='sku')
 res = pd.merge(coffee_orders, jp17, on='orderid')
 
 print(res[ ['sku', 'desc', 'phone'] ], '/res')
+print(res[ ['address'] ], '<<< for next')
+print(res[ ['citystatezip'] ], '<<< for next')
