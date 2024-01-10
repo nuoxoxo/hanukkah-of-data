@@ -1,3 +1,6 @@
+import os
+os.system('python3 2.py && echo "/night 2\n"')
+
 import pandas as pd
 df = pd.read_csv('noahs-customers.csv')
 
@@ -5,14 +8,15 @@ df = pd.read_csv('noahs-customers.csv')
 
 def is_cancer_of_rabbit(date: str):
     year, month, day = date.split('-')
-    if int(year) % 4 == 3 and\
-    ((month == '06' and 22<=int(day)<=30) or\
-    (month == '07' and 1<=int(day)<=22)):
+    if int(year) % 4 == 3 and \
+    ((month == '06' and 22<=int(day)<=30) or \
+    (month == '07' and 1<=int(day)<=22 )):
         return True
     return False
 
 df = df[df['birthdate'].apply(lambda x: is_cancer_of_rabbit(x))]
 
+# ( 'Jamaica, NY 11435' is a hint returned last night )
 # filter 
 
 def is_jamaica( city: str):
@@ -20,4 +24,5 @@ def is_jamaica( city: str):
 
 df = df[df['citystatezip'].apply(lambda x: is_jamaica(x))]
 
-print(df,df[['phone']], '/res')
+print(df)
+print(df[['phone']], '/res')
