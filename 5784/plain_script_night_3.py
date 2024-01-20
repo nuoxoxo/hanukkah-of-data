@@ -1,5 +1,5 @@
 import os
-os.system('python3 2.py && echo "/night 2\n"')
+os.system('python3 plain_script_night_2.py && echo "/night 2\n"')
 
 import pandas as pd
 df = pd.read_csv('noahs-customers.csv')
@@ -25,4 +25,4 @@ def is_jamaica( city: str):
 df = df[df['citystatezip'].apply(lambda x: is_jamaica(x))]
 
 print(df)
-print(df[['phone']], '/res')
+print(df[['phone']], '\n/night 3')
