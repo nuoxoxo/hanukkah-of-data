@@ -14,9 +14,11 @@ prices['margin'] = prices['qty'] * prices['unit_price'] - prices['qty'] * prices
 df_final = pd.merge(prices, df_orders, on='orderid')
 df_final = pd.merge(df_final, df_customers, on='customerid')
 res = df_final\
-    .groupby(['name','phone','birthdate','address','citystatezip'])\
+    .groupby(['customerid', 'name','phone','birthdate','address','citystatezip'])\
     .agg({'margin': 'sum'})\
-    .sort_values(by='margin')\
-    .head(3)
+    .sort_values(by='margin')
 
-print( res, '/res' )
+min_margin = res.nsmallest(1, 'margin')
+
+print( res.head(), '\n/all' )
+print( min_margin, '\n/res', '\n<<< for night 7' )
