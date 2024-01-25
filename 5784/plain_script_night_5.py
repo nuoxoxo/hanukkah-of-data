@@ -20,4 +20,4 @@ res = cat_clients[ cat_clients.citystatezip.str.contains('Staten', case=False) ]
     .sort_values(ascending=False)\
     .head(4)
 
-print(res, '/res')
+print(res, '/res - choose a woman')
