@@ -1,11 +1,6 @@
-import pandas
+from utils import gg, yy, cc, rest, nl, yellow, green, cyan
+from utils import df_customers as df
 
-gg, yy, cc, rest, nl = '\033[32m', '\033[33m', '\033[36m', '\033[0m', '\n'
-def yellow(s: str) -> str: return yy + s + rest
-def green(s: str) -> str: return gg + s + rest
-def cyan(s: str) -> str: return cc + s + rest
-
-df = pandas.read_csv('csv/noahs-customers.csv')
 head, cols, colslist = df.head(), df.columns, df.columns.tolist()
 phone = df['phone']
 phone_str_split, phone_no_hyphens = phone.str.split('-'), phone.str.replace('-', '')
@@ -36,7 +31,7 @@ print(phone_str_split, nl)
 print(yellow('phone/no hyphens'))
 print(phone_no_hyphens, nl)
 
-# create new col 'phone2'
+### create new col 'phone2'
 df['phone2'] = phone_no_hyphens
 print(yellow('added/phone w.o hyphens'))
 print(df.head(), nl)
@@ -66,5 +61,4 @@ print(df[['phone', 'phone2', 'phone3']], nl)
 
 res = df[df['phone2'] == df['phone3']]
 print(res[['name', 'citystatezip', 'birthdate', 'phone', 'phone3']].to_string(index=False))
-print(yellow('res/selected fields'))
-print(green('res/ends'))
+print(yellow('res/selected fields'), green('/ends'))
